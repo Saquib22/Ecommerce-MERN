@@ -10,6 +10,7 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
     const[address, setAddress] = useState("")
+    const[answer,setAnswer] = useState('')
     const navigate = useNavigate()
     const handleSubmit = async(e) => {
        e.preventDefault();
@@ -22,6 +23,7 @@ const Register = () => {
           password,
           address,
           phone,
+          answer,
         });
         if(res.data.success){
           toast.success(res.data.message)
@@ -40,28 +42,25 @@ const Register = () => {
   return (
     <Layout title="Register - Ecommerce APP">
       <div className="form-container">
-        <h1>Register Page</h1>
         <form onSubmit={handleSubmit}>
+          <h4 className="title">Register Page</h4>
           <div className="mb-3">
             <input
               type="text"
               value={name}
               className="form-control"
-              id="exampleInputEmail1"
               placeholder="Enter Your Name"
               onChange={(e) => {
                 setName(e.target.value);
               }}
               required
             />
-            <div id="emailHelp" className="form-text"></div>
           </div>
           <div className="mb-3">
             <input
               type="email"
               value={email}
               className="form-control"
-              id="exampleInputEmail1"
               placeholder="Enter Your Email"
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -75,7 +74,6 @@ const Register = () => {
               type="password"
               value={password}
               className="form-control"
-              
               placeholder="Enter Your Password"
               onChange={(e) => {
                 setPassword(e.target.value);
@@ -104,6 +102,19 @@ const Register = () => {
               placeholder="Enter Your Address"
               onChange={(e) => {
                 setAddress(e.target.value);
+              }}
+              required
+            />
+            <div id="emailHelp" className="form-text"></div>
+          </div>
+          <div className="mb-3">
+            <input
+              type="text"
+              value={answer}
+              className="form-control"
+              placeholder="Favourite Sports"
+              onChange={(e) => {
+                setAnswer(e.target.value);
               }}
               required
             />

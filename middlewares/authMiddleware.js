@@ -21,13 +21,14 @@ export const isAdmin = async(req,res,next) => {
                 success: false,
                 message : 'unauthorize access'
             })
+        }else{
+            next();
         }
-        next()
     } catch (error) {
         console.log(error);
         res.status(401).send({
-            success:false,
-            message:'unauthorized admin'
-        })
+          success: false,
+          message: "Error in admin middelware",
+        });
     }
 }
